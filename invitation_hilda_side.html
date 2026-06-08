@@ -238,7 +238,7 @@ input::placeholder { color: #999; font-size: 13px; font-family: 'Lato', sans-ser
     </div>
     <div class="form-group">
       <label>Kiasi cha Ahadi (TZS) · Pledge Amount</label>
-      <input type="number" id="amount" placeholder="e.g. 100,000" min="0">
+      <input type="text" id="amount" placeholder="e.g. 100,000" inputmode="numeric" oninput="formatAmount(this)">
     </div>
     <button class="btn" id="submitBtn" onclick="submitPledge()">
       Tuma Ahadi · Send My Pledge
@@ -253,22 +253,20 @@ input::placeholder { color: #999; font-size: 13px; font-family: 'Lato', sans-ser
 </div>
 
 <script>
+function formatAmount(input) {
+  // Remove non-digits
+  let raw = input.value.replace(/[^0-9]/g, '');
+  if (raw === '') { input.value = ''; return; }
+  // Format with commas
+  input.value = parseInt(raw).toLocaleString('en-US');
+}
+
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzclLqI_npA9nI7m49qqgBKacKYayPBEmwdT1Qu3dy135Y-klwdbS3rrYesZ4ZS8H6ugQ/exec';
 const SHEET_NAME = "Hilda's Family & Friends";
 const INV_PREFIX = 'H';
 
-function getInvNumber() {
-  const key = 'invNum_Hilda';
-  let n = sessionStorage.getItem(key);
-  if (!n) {
-    n = INV_PREFIX + '-' + (Math.floor(Math.random() * 900) + 100);
-    sessionStorage.setItem(key, n);
-  }
-  return n;
-}
-
-const invNum = getInvNumber();
-document.getElementById('invNum').textContent = 'Invitation No: ' + invNum;
+// Invitation number shown after submission
+document.getElementById('invNum').textContent = '';
 
 function showMsg(t, type) {
   const el = document.getElementById('msg');
@@ -285,7 +283,7 @@ async function submitPledge() {
     showMsg('Tafadhali jaza sehemu zote — Please fill all fields.', 'error');
     return;
   }
-  if (Number(amount) <= 0) {
+  if (Number(amount.replace(/,/g, '')) <= 0) {
     showMsg('Tafadhali ingiza kiasi sahihi — Enter a valid amount.', 'error');
     return;
   }
@@ -304,7 +302,7 @@ async function submitPledge() {
         sheet: SHEET_NAME,
         invNumber: invNum,
         name, phone,
-        amount: Number(amount),
+        amount: Number(amount.replace(/,/g, '')),  
         date: new Date().toLocaleDateString('sw-TZ'),
         side: 'Hilda'
       })
