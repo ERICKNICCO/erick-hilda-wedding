@@ -7,15 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background: #fdf0f3;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Lato', sans-serif;
-  margin: 0; width: 100%;
-}
+body { background: #fdf0f3; min-height: 100vh; display: flex; flex-direction: column; align-items: center; font-family: 'Lato', sans-serif; margin: 0; width: 100%; }
 .card-image-wrap { width: 100%; max-width: 520px; display: block; line-height: 0; margin: 0 auto; }
 .card-image-wrap img { width: 100%; height: auto; display: block; }
 .pledge-wrap { width: 100%; max-width: 520px; background: #fff; border-top: 3px solid #B8912A; box-shadow: 0 8px 40px rgba(0,0,0,0.13); overflow: hidden; margin: 0 auto; box-sizing: border-box; }
@@ -37,7 +29,7 @@ input::placeholder { color: #999; font-size: 13px; font-family: 'Lato', sans-ser
 .msg.success { background: linear-gradient(135deg, #f5fff5, #eafaea); color: #2e7d32; display: block; border-left: 3px solid #B8912A; }
 .msg.error { background: #fff5f5; color: #c62828; display: block; border-left: 3px solid #ef5350; }
 .card-footer { background: linear-gradient(135deg, #fff5f7, #fff); padding: 16px 40px 20px 40px; text-align: center; border-top: 1px solid #fce4ec; box-sizing: border-box; }
-.inv-number { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 2px; color: #1a1a1a; font-weight: 700; margin-bottom: 4px; min-height: 20px; }
+.inv-number { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 2px; color: #1a1a1a; font-weight: 700; margin-bottom: 4px; min-height: 22px; }
 .footer-names { font-family: 'Great Vibes', cursive; font-size: 22px; color: #B8912A; margin-top: 4px; }
 @media (max-width: 600px) {
   .card-image-wrap, .pledge-wrap { max-width: 100%; }
@@ -79,7 +71,7 @@ input::placeholder { color: #999; font-size: 13px; font-family: 'Lato', sans-ser
     <div class="msg" id="msg"></div>
   </div>
   <div class="card-footer">
-    <div class="inv-number" id="invNum"></div>
+    <div class="inv-number" id="invNum">Invitation No: H-???</div>
     <div class="footer-names">Erick & Hilda</div>
   </div>
 </div>
@@ -89,6 +81,19 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzclLqI_npA9nI7m49qq
 const SHEET_NAME = "Hilda's Family & Friends";
 const SIDE = 'Hilda';
 const PREFIX = 'H';
+
+// Generate unique number: PREFIX + 3-digit counter per device
+// Use localStorage so same device always gets same number
+const storageKey = 'inv_H';
+let invNumber = localStorage.getItem(storageKey);
+if (!invNumber) {
+  // First time on this device — use random 3-digit to avoid collisions
+  // between different devices (001-999)
+  const num = Math.floor(Math.random() * 899) + 100; // 100-998
+  invNumber = PREFIX + '-' + String(num).padStart(3, '0');
+  localStorage.setItem(storageKey, invNumber);
+}
+document.getElementById('invNum').textContent = 'Invitation No: ' + invNumber;
 
 function formatAmount(input) {
   let raw = input.value.replace(/[^0-9]/g, '');
@@ -120,37 +125,20 @@ async function submitPledge() {
   btn.disabled = true;
   btn.textContent = 'Inatuma...';
 
-  const payload = {
-    sheet: SHEET_NAME,
-    name, phone,
-    amount: Number(amount.replace(/,/g, '')),
-    date: new Date().toLocaleDateString('sw-TZ'),
-    side: SIDE
-  };
-
   try {
-    // Use image trick to send data and get response via JSONP-style callback
-    const params = new URLSearchParams(payload).toString();
-    
     await fetch(SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({
+        sheet: SHEET_NAME,
+        invNumber: invNumber,
+        name, phone,
+        amount: Number(amount.replace(/,/g, '')),
+        date: new Date().toLocaleDateString('sw-TZ'),
+        side: SIDE
+      })
     });
-
-    // After successful send, fetch the count from the sheet to display number
-    // Get row count via GET request
-    const getUrl = SCRIPT_URL + '?action=getCount&side=' + SIDE;
-    try {
-      const res = await fetch(getUrl);
-      const json = await res.json();
-      if (json.invNumber) {
-        document.getElementById('invNum').textContent = 'Invitation No: ' + json.invNumber;
-      }
-    } catch(e) {
-      // If can't get number, don't show it
-    }
 
     showMsg('✓ Ahadi yako imetumwa! Asante sana kwa upendo wako. ❤', 'success');
     btn.textContent = 'Imetumwa ✓';
