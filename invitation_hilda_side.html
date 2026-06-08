@@ -4,213 +4,49 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Erick & Hilda — Mwaliko wa Harusi</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 body {
   background: #fdf0f3;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   font-family: 'Lato', sans-serif;
-  margin: 0;
-  width: 100%;
+  margin: 0; width: 100%;
 }
-
-/* ── CARD IMAGE ── */
-.card-image-wrap {
-  width: 100%;
-  max-width: 520px;
-  display: block;
-  line-height: 0;
-  margin: 0 auto;
-}
-.card-image-wrap img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ── PLEDGE WRAP ── */
-.pledge-wrap {
-  width: 100%;
-  max-width: 520px;
-  background: #fff;
-  border-top: 3px solid #B8912A;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.13);
-  overflow: hidden;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-/* ── PLEDGE HEADER ── */
-.pledge-header {
-  background: linear-gradient(135deg, #fff5f7 0%, #fff 100%);
-  padding: 28px 40px 18px 40px;
-  text-align: center;
-  border-bottom: 1px solid #fce4ec;
-  box-sizing: border-box;
-}
-
-.side-pill {
-  display: inline-block;
-  background: #1A4A6B;
-  color: #fff;
-  font-family: 'Cinzel', serif;
-  font-size: 8.5px;
-  letter-spacing: 3px;
-  padding: 4px 16px;
-  border-radius: 20px;
-  text-transform: uppercase;
-  margin-bottom: 14px;
-}
-
-.pledge-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: 38px;
-  color: #B8912A;
-  line-height: 1.1;
-  margin-bottom: 4px;
-}
-
-.pledge-subtitle {
-  font-family: 'Cinzel', serif;
-  font-size: 14px;
-  letter-spacing: 2px;
-  color: #1a1a1a;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-/* ── FORM ── */
-.form-wrap {
-  padding: 28px 40px 32px 40px;
-  background: #fff;
-  box-sizing: border-box;
-}
-
-.form-group {
-  margin-bottom: 22px;
-}
-
-label {
-  display: block;
-  font-family: 'Cinzel', serif;
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  color: #1a1a1a;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-  font-weight: 700;
-}
-
-input {
-  width: 100%;
-  padding: 10px 0 8px;
-  border: none;
-  border-bottom: 1.5px solid #f8c8d4;
-  background: transparent;
-  font-size: 15px;
-  font-family: 'Cormorant Garamond', serif;
-  color: #1a1a1a;
-  outline: none;
-  transition: border-color 0.25s;
-  box-sizing: border-box;
-}
+.card-image-wrap { width: 100%; max-width: 520px; display: block; line-height: 0; margin: 0 auto; }
+.card-image-wrap img { width: 100%; height: auto; display: block; }
+.pledge-wrap { width: 100%; max-width: 520px; background: #fff; border-top: 3px solid #B8912A; box-shadow: 0 8px 40px rgba(0,0,0,0.13); overflow: hidden; margin: 0 auto; box-sizing: border-box; }
+.pledge-header { background: linear-gradient(135deg, #fff5f7 0%, #fff 100%); padding: 28px 40px 18px 40px; text-align: center; border-bottom: 1px solid #fce4ec; box-sizing: border-box; }
+.side-pill { display: inline-block; background: #1A4A6B; color: #fff; font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: 3px; padding: 4px 16px; border-radius: 20px; text-transform: uppercase; margin-bottom: 14px; }
+.pledge-title { font-family: 'Great Vibes', cursive; font-size: 38px; color: #B8912A; line-height: 1.1; margin-bottom: 4px; }
+.pledge-subtitle { font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 2px; color: #1a1a1a; text-transform: uppercase; font-weight: 700; }
+.form-wrap { padding: 28px 40px 32px 40px; background: #fff; box-sizing: border-box; }
+.form-group { margin-bottom: 22px; }
+label { display: block; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 1.5px; color: #1a1a1a; text-transform: uppercase; margin-bottom: 6px; font-weight: 700; }
+input { width: 100%; padding: 10px 0 8px; border: none; border-bottom: 1.5px solid #f8c8d4; background: transparent; font-size: 15px; font-family: 'Cormorant Garamond', serif; color: #1a1a1a; outline: none; transition: border-color 0.25s; box-sizing: border-box; }
 input:focus { border-bottom-color: #B8912A; }
 input::placeholder { color: #999; font-size: 13px; font-family: 'Lato', sans-serif; }
-
-/* ── BUTTON ── */
-.btn {
-  width: 100%;
-  margin-top: 8px;
-  padding: 15px;
-  background: linear-gradient(135deg, #2a1a3a 0%, #3d2255 100%);
-  color: #fff;
-  border: none;
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: opacity 0.2s;
-  position: relative;
-  box-sizing: border-box;
-}
-.btn::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: #B8912A;
-}
+.btn { width: 100%; margin-top: 8px; padding: 15px; background: linear-gradient(135deg, #2a1a3a 0%, #3d2255 100%); color: #fff; border: none; font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; position: relative; box-sizing: border-box; }
+.btn::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: #B8912A; }
 .btn:hover { opacity: 0.9; }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-/* ── MESSAGES ── */
-.msg {
-  margin-top: 14px;
-  padding: 12px 16px;
-  font-size: 13px;
-  text-align: center;
-  display: none;
-  font-family: 'Lato', sans-serif;
-  line-height: 1.5;
-}
+.msg { margin-top: 14px; padding: 12px 16px; font-size: 13px; text-align: center; display: none; font-family: 'Lato', sans-serif; line-height: 1.5; }
 .msg.success { background: linear-gradient(135deg, #f5fff5, #eafaea); color: #2e7d32; display: block; border-left: 3px solid #B8912A; }
-.msg.error   { background: #fff5f5; color: #c62828; display: block; border-left: 3px solid #ef5350; }
-
-/* ── FOOTER ── */
-.card-footer {
-  background: linear-gradient(135deg, #fff5f7, #fff);
-  padding: 12px 40px 18px 40px;
-  text-align: center;
-  border-top: 1px solid #fce4ec;
-  box-sizing: border-box;
-}
-.inv-number {
-  font-family: 'Cinzel', serif;
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: #1a1a1a;
-  font-weight: 700;
-}
-.footer-names {
-  font-family: 'Great Vibes', cursive;
-  font-size: 22px;
-  color: #B8912A;
-  margin-top: 4px;
-}
-
-/* ── MOBILE ONLY ── */
+.msg.error { background: #fff5f5; color: #c62828; display: block; border-left: 3px solid #ef5350; }
+.card-footer { background: linear-gradient(135deg, #fff5f7, #fff); padding: 16px 40px 20px 40px; text-align: center; border-top: 1px solid #fce4ec; box-sizing: border-box; }
+.inv-number { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 2px; color: #1a1a1a; font-weight: 700; margin-bottom: 4px; min-height: 20px; }
+.footer-names { font-family: 'Great Vibes', cursive; font-size: 22px; color: #B8912A; margin-top: 4px; }
 @media (max-width: 600px) {
-  .card-image-wrap,
-  .pledge-wrap {
-    max-width: 100%;
-  }
-  .pledge-header {
-    padding: 24px 20px 16px 20px;
-  }
-  .form-wrap {
-    padding: 24px 20px 28px 20px;
-  }
-  .card-footer {
-    padding: 12px 20px 18px 20px;
-  }
-  input {
-    font-size: 16px; /* prevents iOS zoom */
-  }
-  .pledge-title {
-    font-size: clamp(30px, 9vw, 38px);
-  }
-  .btn {
-    font-size: 11px;
-    letter-spacing: 2px;
-    padding: 16px;
-  }
+  .card-image-wrap, .pledge-wrap { max-width: 100%; }
+  .pledge-header { padding: 24px 20px 16px 20px; }
+  .form-wrap { padding: 24px 20px 28px 20px; }
+  .card-footer { padding: 12px 20px 18px 20px; }
+  input { font-size: 16px; }
+  .pledge-title { font-size: clamp(30px, 9vw, 38px); }
+  .btn { font-size: 11px; letter-spacing: 2px; padding: 16px; }
 }
 </style>
 </head>
@@ -226,7 +62,6 @@ input::placeholder { color: #999; font-size: 13px; font-family: 'Lato', sans-ser
     <div class="pledge-title">Toa Ahadi Yako</div>
     <div class="pledge-subtitle">Your Wedding Pledge · Mchango wa Harusi</div>
   </div>
-
   <div class="form-wrap">
     <div class="form-group">
       <label>Jina Kamili · Full Name</label>
@@ -240,12 +75,9 @@ input::placeholder { color: #999; font-size: 13px; font-family: 'Lato', sans-ser
       <label>Kiasi cha Ahadi (TZS) · Pledge Amount</label>
       <input type="text" id="amount" placeholder="e.g. 100,000" inputmode="numeric" oninput="formatAmount(this)">
     </div>
-    <button class="btn" id="submitBtn" onclick="submitPledge()">
-      Tuma Ahadi · Send My Pledge
-    </button>
+    <button class="btn" id="submitBtn" onclick="submitPledge()">Tuma Ahadi · Send My Pledge</button>
     <div class="msg" id="msg"></div>
   </div>
-
   <div class="card-footer">
     <div class="inv-number" id="invNum"></div>
     <div class="footer-names">Erick & Hilda</div>
@@ -253,22 +85,16 @@ input::placeholder { color: #999; font-size: 13px; font-family: 'Lato', sans-ser
 </div>
 
 <script>
-function formatAmount(input) {
-  // Remove non-digits
-  let raw = input.value.replace(/[^0-9]/g, '');
-  if (raw === '') { input.value = ''; return; }
-  // Format with commas
-  input.value = parseInt(raw).toLocaleString('en-US');
-}
-
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzclLqI_npA9nI7m49qqgBKacKYayPBEmwdT1Qu3dy135Y-klwdbS3rrYesZ4ZS8H6ugQ/exec';
 const SHEET_NAME = "Hilda's Family & Friends";
-const INV_PREFIX = 'H';
+const SIDE = 'Hilda';
+const PREFIX = 'H';
 
-// Generate unique invitation number using timestamp
-const ts = Date.now().toString().slice(-4); // last 4 digits of timestamp
-const invNum = 'H-' + ts;
-document.getElementById('invNum').textContent = 'Invitation No: ' + invNum;
+function formatAmount(input) {
+  let raw = input.value.replace(/[^0-9]/g, '');
+  if (raw === '') { input.value = ''; return; }
+  input.value = parseInt(raw).toLocaleString('en-US');
+}
 
 function showMsg(t, type) {
   const el = document.getElementById('msg');
@@ -293,24 +119,42 @@ async function submitPledge() {
   const btn = document.getElementById('submitBtn');
   btn.disabled = true;
   btn.textContent = 'Inatuma...';
-  document.getElementById('msg').className = 'msg';
+
+  const payload = {
+    sheet: SHEET_NAME,
+    name, phone,
+    amount: Number(amount.replace(/,/g, '')),
+    date: new Date().toLocaleDateString('sw-TZ'),
+    side: SIDE
+  };
 
   try {
+    // Use image trick to send data and get response via JSONP-style callback
+    const params = new URLSearchParams(payload).toString();
+    
     await fetch(SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        sheet: SHEET_NAME,
-        invNumber: invNum,
-        name, phone,
-        amount: Number(amount.replace(/,/g, '')),  
-        date: new Date().toLocaleDateString('sw-TZ'),
-        side: 'Hilda'
-      })
+      body: JSON.stringify(payload)
     });
+
+    // After successful send, fetch the count from the sheet to display number
+    // Get row count via GET request
+    const getUrl = SCRIPT_URL + '?action=getCount&side=' + SIDE;
+    try {
+      const res = await fetch(getUrl);
+      const json = await res.json();
+      if (json.invNumber) {
+        document.getElementById('invNum').textContent = 'Invitation No: ' + json.invNumber;
+      }
+    } catch(e) {
+      // If can't get number, don't show it
+    }
+
     showMsg('✓ Ahadi yako imetumwa! Asante sana kwa upendo wako. ❤', 'success');
     btn.textContent = 'Imetumwa ✓';
+
   } catch(e) {
     showMsg('Hitilafu imetokea — please try again.', 'error');
     btn.disabled = false;
