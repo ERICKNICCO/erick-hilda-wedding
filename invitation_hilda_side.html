@@ -265,8 +265,10 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzclLqI_npA9nI7m49qq
 const SHEET_NAME = "Hilda's Family & Friends";
 const INV_PREFIX = 'H';
 
-// Invitation number shown after submission
-document.getElementById('invNum').textContent = '';
+// Generate unique invitation number using timestamp
+const ts = Date.now().toString().slice(-4); // last 4 digits of timestamp
+const invNum = 'H-' + ts;
+document.getElementById('invNum').textContent = 'Invitation No: ' + invNum;
 
 function showMsg(t, type) {
   const el = document.getElementById('msg');
